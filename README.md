@@ -6,6 +6,10 @@ Nukkit上的点券插件，简单易用的API。
 
 需要前置 DbLib
 
+![](https://i.loli.net/2020/03/09/4iGVKLPkrvBfeM2.jpg)
+
+![](https://i.loli.net/2020/03/09/UovzLkRh6sTxCKt.jpg)
+
 ## 指令介绍
 
 /points => 打开GUI界面
@@ -31,5 +35,3 @@ mp1.set(1000); #设置玩家点券为1000点券
 mp1.give(1000); #给玩家1000点券
 mp1.take(1000); #拿走玩家1000点券
 ```
-
-<video id="video" controls="" preload="none" > <source id="mp4" src="https://github.com/Skyxmao/MaoPoints/blob/master/video1.mp4" type="video/mp4"> </video>
