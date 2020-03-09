@@ -22,3 +22,13 @@ Nukkit上的点券插件，简单易用的API。
 
 /points look <id> => 查看玩家点券
 
+## API介绍
+
+```java
+PlayerPoint mp1 = new PlayerPoint(sender.getName());
+mp1.has(1000); #该玩家是否有1000点券
+mp1.set(1000); #设置玩家点券为1000点券
+mp1.give(1000); #给玩家1000点券
+mp1.take(1000); #拿走玩家1000点券
+```
+
