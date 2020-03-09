@@ -32,3 +32,4 @@ mp1.give(1000); #给玩家1000点券
 mp1.take(1000); #拿走玩家1000点券
 ```
 
+<video id="video" controls="" preload="none" > <source id="mp4" src="https://github.com/Skyxmao/MaoPoints/blob/master/video1.mp4" type="video/mp4"> </video>
