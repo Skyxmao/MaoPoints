@@ -9,6 +9,7 @@ import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.Listener;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.plugin.PluginBase;
+import cn.nukkit.scheduler.NukkitRunnable;
 import cn.nukkit.utils.Config;
 import me.xmao.MaoPoints.Core.PlayerPoint;
 import me.xmao.MaoPoints.Listener.WindowListener;
@@ -25,8 +26,25 @@ public class MaoPoints extends PluginBase{
     @Override
     public void onEnable() {
 		this.saveDefaultConfig();
+		this.config = this.getConfig();
 		this.getServer().getPluginManager().registerEvents((Listener)new WindowListener(), (Plugin)this);
-		this.point_sql = new PlayerModel("plugins\\MaoPoints\\database.db");
+		if(this.config.getString("Storage.type").equalsIgnoreCase("sqlite")) {
+			this.point_sql = new PlayerModel("plugins\\MaoPoints\\database.db");
+		}else if(this.config.getString("Storage.type").equalsIgnoreCase("mysql")) {
+			//等待填坑
+			String user = this.config.getString("Storage.user");
+			String pass = this.config.getString("Storage.pass");
+			String host = this.config.getString("Storage.host");
+			String db = this.config.getString("Storage.db");
+			this.point_sql = new PlayerModel(host,user,pass,db);
+			this.point_sql.isShow = true;
+	        (new NukkitRunnable() {
+	            @Override
+	            public void run() {
+	            	MaoPoints.point_sql.getValue("sss");
+	           }
+	      }).runTaskTimerAsynchronously(this, 60 * 20, 60 * 20);
+		}
 		System.out.println("\r\n    __  ___            ____        _       __      \r\n" + 
 				"   /  |/  /___ _____  / __ \\____  (_)___  / /______\r\n" + 
 				"  / /|_/ / __ `/ __ \\/ /_/ / __ \\/ / __ \\/ __/ ___/\r\n" + 
@@ -43,6 +61,9 @@ public class MaoPoints extends PluginBase{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     	   if (command.getName().equalsIgnoreCase("points")) {
                if (args.length == 0) {
+            	   if(! (sender instanceof Player)) {
+            		   return true;
+            	   }
               	   MainView.showMainView((Player) sender);
                    return true;
                }

@@ -12,7 +12,12 @@ public class PlayerModel extends SqlHelper
         super(dbFileName);
         this.createDB();
     }
-    
+    public PlayerModel(final String host, final String user, final String pass, final String db) {
+
+        
+        super(host,user,pass,db);
+        this.createDB();
+    }
     public boolean createDB() {
         try {
             final DatabaseMetaData dbMetaData = this.conn.getMetaData();
