@@ -1,0 +1,15 @@
+name: MaoPoints
+main: me.xmao.MaoPoints.MaoPoints
+version: "1.0.0"
+api: ["1.0.0"]
+
+
+author: XMAO
+description: MaoPoints
+website: http://xmao.me
+
+commands:
+  points: 
+    description: "points"
+    usage: /points
+    aliases: [p]

@@ -1,0 +1,7 @@
+Enable: true #是否开启自动重启功能
+Times:
+   - "11:0:0" #时间点 不需要写两个0
+   - "22:12:30"
+   - "22:14:0"
+reloadMessage: "Restart countdown: %time%" #重启时提示语句 %time% 代表当前剩余重启时间
+reloadStartMessage: "The server will restart in 30 seconds!" #倒计时开始前提示语句
